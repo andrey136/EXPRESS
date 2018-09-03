@@ -24,8 +24,15 @@ app.post('/post', (req, res)=> {
 });
 
 app.delete('/delete', (req, res) => {
-    todoList = todoList.filter(item => item.title !== req.body.name);
-    res.status(201).json('Well done!');
+    deletedElementIsInTodoList = false;
+    todoList.map(item => {
+        if (item.title === req.body.name){
+            todoList = todoList.filter(item => item.title !== req.body.name);
+            res.status(201).json('Well done!');
+            deletedElementIsInTodoList = true;
+        }
+    });
+    if(!deletedElementIsInTodoList)res.status(404).json('ERROR');
 });
 app.listen(5000, ()=> console.log('LISTEN 5000'));
 
