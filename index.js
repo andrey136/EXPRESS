@@ -21,12 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-let todoList = [
-    { title: 'First', completed: true },
-    { title: 'Second', completed: true },
-    { title: 'Third', completed: true },
-    { title: 'Forth', completed: true },
-];
+let todoList = [];
 
 app.get('/', (req, res)=> {
     res.status(201).json(todoList)
